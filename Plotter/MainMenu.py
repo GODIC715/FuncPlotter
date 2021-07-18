@@ -17,12 +17,14 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(900, 600)
+        MainWindow.resize(900, 775)
+        
+
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.plotArea = QWidget(self.centralwidget)
         self.plotArea.setObjectName(u"plotArea")
-        self.plotArea.setGeometry(QRect(10, 160, 900, 440))
+        self.plotArea.setGeometry(QRect(10, 160, 600, 600))
         self.horizontalLayoutWidget_2 = QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
         self.horizontalLayoutWidget_2.setGeometry(QRect(0, 70, 901, 41))
@@ -138,7 +140,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.sampleNumberLable.setText(QCoreApplication.translate("MainWindow", u"Number of samples", None))
 #if QT_CONFIG(tooltip)
-        self.sampleNumberSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Supports integers between -999 and 999", None))
+        self.sampleNumberSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Needs to be =>100 to be smooth", None))
 #endif // QT_CONFIG(tooltip)
         self.plotButton.setText(QCoreApplication.translate("MainWindow", u"Plot", None))
         self.titleLabel.setText(QCoreApplication.translate("MainWindow", u"Function Plotter", None))
