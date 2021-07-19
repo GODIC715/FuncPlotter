@@ -90,7 +90,7 @@ class Ui_MainWindow(object):
         self.plotButton.setGeometry(QRect(200, 140, 75, 30))
         font2 = QFont()
         font2.setFamily(u"Times New Roman")
-        font2.setPointSize(12)
+        font2.setPointSize(14)
         self.plotButton.setFont(font2)
         self.plotButton.setStyleSheet(u"border-radius:10px;\n"
 "background-color:white;\n"
@@ -101,7 +101,9 @@ class Ui_MainWindow(object):
         self.clearButton.setFont(font2)
         self.clearButton.setStyleSheet(u"border-radius:10px;\n"
 "background-color:white;\n"
-"border:2px solid black;")
+"border:2px solid black; font: 14pt \"MS Shell Dlg 2\";\n"
+"color: white;\n"
+"")
         self.upperLimitSpin = QSpinBox(self.bgWidget)
         self.upperLimitSpin.setObjectName(u"upperLimitSpin")
         self.upperLimitSpin.setGeometry(QRect(510, 90, 50, 23))
