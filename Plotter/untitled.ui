@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Function Plotter</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>Icons/Icon.png</normaloff>Icons/Icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color qlineargradient(spread:pad, x1:0.0852273, y1:0.063, x2:0.988, y2:0.982955, stop:0 rgba(62, 111, 170, 255), stop:1 rgba(255, 255, 255, 255))</string>
+   </property>
+   <widget class="QWidget" name="bgWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>600</width>
+      <height>760</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#bgWidget{
+background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0.994, stop:0 rgba(79, 25, 173, 255), stop:0.988636 rgba(70, 104, 239, 255))}</string>
+    </property>
+    <widget class="QLabel" name="functionLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>50</y>
+       <width>75</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;
+color: white;</string>
+     </property>
+     <property name="text">
+      <string>Function</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="functionInput">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>50</y>
+       <width>120</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="lowerLimitSpin">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>90</y>
+       <width>50</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Supports integers between -999 and 999</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">opacity:0.5;</string>
+     </property>
+     <property name="minimum">
+      <number>-999</number>
+     </property>
+     <property name="maximum">
+      <number>999</number>
+     </property>
+     <property name="singleStep">
+      <number>1</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="displayIntegerBase">
+      <number>10</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="titleLabel">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>10</y>
+       <width>600</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>16</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;
+color: white;
+</string>
+     </property>
+     <property name="text">
+      <string>Function plotter</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lowerLimitLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>90</y>
+       <width>160</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;
+color: white;</string>
+     </property>
+     <property name="text">
+      <string>Lower bound for X</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="plotArea" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>170</y>
+       <width>590</width>
+       <height>590</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="upperLimitLabel">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>90</y>
+       <width>157</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;
+color: white;
+</string>
+     </property>
+     <property name="text">
+      <string>Upper bound for X</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="plotButton">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>140</y>
+       <width>75</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;
+background-color:white;
+border:2px solid black;</string>
+     </property>
+     <property name="text">
+      <string>Plot</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clearButton">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>140</y>
+       <width>75</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;
+background-color:white;
+border:2px solid black;</string>
+     </property>
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="upperLimitSpin">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>90</y>
+       <width>50</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Supports integers between -999 and 999</string>
+     </property>
+     <property name="minimum">
+      <number>-999</number>
+     </property>
+     <property name="maximum">
+      <number>999</number>
+     </property>
+     <property name="singleStep">
+      <number>1</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="displayIntegerBase">
+      <number>10</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="sampleNumberLable">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>50</y>
+       <width>134</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;
+color: white;</string>
+     </property>
+     <property name="text">
+      <string>Sample number</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="sampleNumberSpin">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>50</y>
+       <width>50</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Needs to be =&gt;100 to be smooth</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="minimum">
+      <number>10</number>
+     </property>
+     <property name="maximum">
+      <number>9999</number>
+     </property>
+     <property name="singleStep">
+      <number>10</number>
+     </property>
+     <property name="value">
+      <number>10</number>
+     </property>
+     <property name="displayIntegerBase">
+      <number>10</number>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>functionInput</tabstop>
+  <tabstop>sampleNumberSpin</tabstop>
+  <tabstop>lowerLimitSpin</tabstop>
+  <tabstop>upperLimitSpin</tabstop>
+  <tabstop>plotButton</tabstop>
+  <tabstop>clearButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="mc.qrc"/>
+ </resources>
+ <connections/>
+</ui>

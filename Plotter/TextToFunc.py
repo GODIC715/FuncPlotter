@@ -18,6 +18,7 @@ allowedWords = [
 
 def checkFuncInput(string : str):
     # find all words in the string and check if all are allowed:
+    string = string.replace(" ","")
     if string == "":
         return "Empty function string"
     else:
@@ -31,10 +32,11 @@ def evalFunction(string : str):
     string = string.replace(" ","")
     for oldWord, newWord in replacements.items():
         string = string.replace(oldWord, newWord)
-    
     def func(x):
-        return eval(string)
-    
+        try:
+            return eval(string)
+        except (TypeError,SyntaxError):
+            return False
     return func
 
 def mainFunc(string : str):
