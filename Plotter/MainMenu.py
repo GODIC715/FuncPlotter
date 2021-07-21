@@ -93,14 +93,14 @@ class Ui_MainWindow(object):
         font2.setPointSize(14)
         self.plotButton.setFont(font2)
         self.plotButton.setStyleSheet(u"border-radius:10px;\n"
-"background-color:white;\n"
-"border:2px solid black;")
+"background-color:#4f19ad;\n"
+"border:2px solid black; color:white;")
         self.clearButton = QPushButton(self.bgWidget)
         self.clearButton.setObjectName(u"clearButton")
         self.clearButton.setGeometry(QRect(330, 140, 75, 30))
         self.clearButton.setFont(font2)
         self.clearButton.setStyleSheet(u"border-radius:10px;\n"
-"background-color:white;\n"
+"background-color:#4f19ad;\n"
 "border:2px solid black; font: 14pt \"MS Shell Dlg 2\";\n"
 "color: white;\n"
 "")
@@ -142,6 +142,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Function Plotter", None))
         self.functionLabel.setText(QCoreApplication.translate("MainWindow", u"Function", None))
+        self.functionInput.setToolTip(QCoreApplication.translate("MainWindow", u"Supported special operations are 'sin()', 'cos()' exponant as 'exp()' and power as '^'", None))
 #if QT_CONFIG(tooltip)
         self.lowerLimitSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Supports integers between -999 and 999", None))
 #endif // QT_CONFIG(tooltip)

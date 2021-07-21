@@ -16,20 +16,26 @@ allowedWords = [
     'sqrt',
     'exp']
 
-def checkFuncInput(string : str):
-    # find all words in the string and check if all are allowed:
+def prepString(string : str) -> str:
     string = string.replace(" ","")
+    string = string.lower()
+    return string
+
+# Find all words in the string and check if all are allowed:
+def checkFuncInput(string : str):
+    string = prepString(string)
     if string == "":
         return "Empty function string"
     else:
-        string = string.lower()
+        # Checks all words to make sure it's in the allowed word list.
+        # Returns true if the string is clean. Returns a message to be displayed in a message box otherwise.
         for word in re.findall('[a-zA-Z_]+', string):
             if word not in allowedWords:
                 return f"{word} is not valid to use in math expression"
         return True
 
 def evalFunction(string : str):
-    string = string.replace(" ","")
+    string = prepString(string)
     for oldWord, newWord in replacements.items():
         string = string.replace(oldWord, newWord)
     def func(x):
@@ -38,12 +44,6 @@ def evalFunction(string : str):
         except (TypeError,SyntaxError):
             return False
     return func
-
-def mainFunc(string : str):
-    if checkFuncInput(string):
-        return evalFunction(string)
-    else:
-        return False
 
 if __name__ == '__main__':
     mathText = input('enter function: f(x) = ')
@@ -58,20 +58,17 @@ if __name__ == '__main__':
         print("Invalid inputs in bounds and/or number of samples")
         exit()
 
-    if mainFunc(mathText) == False:
+    if evalFunction(mathText) == False:
         print("invalid inputs. Please check again.")
     else:
-        if lowerBound != upperBound:
-            if lowerBound < upperBound:
-                if numberOfSamples > 0:
-                    mathFunction = mainFunc(mathText)
-                    xValues = np.linspace(start = lowerBound, stop = upperBound, num = numberOfSamples)
-                    plt.plot(xValues, mathFunction(xValues))
-                    plt.xlim(lowerBound, upperBound)
-                    plt.show()
-                else:
-                    print("Number of samples must be a positive integer")
-            else:
-                print("Lower bound must be lower than the upper bound")
+        if lowerBound >= upperBound: 
+            print("Lower bound must be explicitly lower than the upper bound")
         else:
-            print("The lower bound must not equal the upper bound")
+            if numberOfSamples <= 0: 
+                print("Number of samples must be a positive integer")
+            else:
+                mathFunction = evalFunction(mathText)
+                xValues = np.linspace(start = lowerBound, stop = upperBound, num = numberOfSamples)
+                plt.plot(xValues, mathFunction(xValues))
+                plt.xlim(lowerBound, upperBound)
+                plt.show()
