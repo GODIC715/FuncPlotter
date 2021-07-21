@@ -66,20 +66,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # find and see the text on the messagebox 
         self.testingVar = ""
 
-        self.FuncString = self.functionInput.text()
+        self.funcString = self.functionInput.text()
+        self.funcString = prepString(self.funcString)
         self.lowerLimit = self.lowerLimitSpin.value()
         self.upperLimit = self.upperLimitSpin.value()
         self.sampleNum = self.sampleNumberSpin.value()
-        self.initFuncCheck = checkFuncInput(self.FuncString)
+        self.initFuncCheck = checkFuncInput(self.funcString)
         if self.initFuncCheck != True: 
             self.testingVar = self.initFuncCheck
             self.displayMessage(self.initFuncCheck)
         else:
-            if self.lowerLimit >= self.upperLimit: 
+            if self.lowerLimit >= self.upperLimit:
                 self.testingVar = "Lower bound must be explicitly lower than the upper bound"
                 self.displayMessage("Lower bound must be explicitly lower than the upper bound")
             else:
-                mathFunction = evalFunction(self.FuncString)
+                mathFunction = evalFunction(self.funcString)
                 xValues = np.linspace(start = self.lowerLimit, stop = self.upperLimit, num = self.sampleNum)
                 yValues = mathFunction(xValues)
                 if type(yValues) == str:
@@ -91,10 +92,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         self.displayMessage("You probably forgot to close a bracket somewhere. Check for 'sin(x' for example")
                 else:
                     self.clearCanvas()
-                    if "x" not in self.FuncString:
-                        self.canvas.axes.plot(xValues, np.array([yValues for x in range(self.sampleNum)]), color='k', linewidth=3, label = f'{self.FuncString}')
+                    if "x" not in self.funcString:
+                        self.canvas.axes.plot(xValues, np.array([yValues for x in range(self.sampleNum)]), color='k', linewidth=3, label = f'{self.funcString}')
                     else:
-                        self.canvas.axes.plot(xValues, mathFunction(xValues), color='k', linewidth=3, label = f'{self.FuncString}')
+                        self.canvas.axes.plot(xValues, mathFunction(xValues), color='k', linewidth=3, label = f'{self.funcString}')
                     self.canvas.axes.legend()
                     self.canvas.draw()
 
