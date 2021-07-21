@@ -41,25 +41,31 @@ def evalFunction(string : str):
     def func(x):
         try:
             return eval(string)
-        except (TypeError,SyntaxError,NameError):
-            return False
+        except TypeError:
+            return "TypeError"
+        except SyntaxError:
+            return "SyntaxError"
     return func
 
 if __name__ == '__main__':
     mathText = input('enter function: f(x) = ')
-    if mathText == "":
-        print("Empty/invalid function input.")
+    if checkFuncInput(mathText) != True:
+        print(checkFuncInput(mathText))
         exit()
-    try:
-        lowerBound = float(input('enter lower limit: '))
-        upperBound = float(input('enter upper limit: '))
-        numberOfSamples = int(input('enter number of samples to generate: '))
-    except ValueError:
-        print("Invalid inputs in bounds and/or number of samples")
-        exit()
-
-    if evalFunction(mathText) == False:
-        print("invalid inputs. Please check again.")
+    else:
+        lowerBound = input('enter lower limit: ')
+        upperBound = input('enter upper limit: ')
+        numberOfSamples = input('enter number of samples to generate: ')
+        try:
+            lowerBound = float(lowerBound)
+            upperBound = float(upperBound)
+            numberOfSamples = int(numberOfSamples)        
+        except ValueError:
+            print("Invalid inputs in bounds and/or number of samples")
+    if evalFunction(mathText) == "TypeError":
+        print("You probably forgot to provide an argument somewhere. Check for 'sin()' for example")
+    elif evalFunction(mathText) == "SyntaxError":
+        print("You probably forgot to close a bracket somewhere. Check for 'sin(x' for example")
     else:
         if lowerBound >= upperBound: 
             print("Lower bound must be explicitly lower than the upper bound")

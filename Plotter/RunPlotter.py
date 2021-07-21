@@ -61,27 +61,43 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         msg.exec()
     
     def drawPlot(self):
+
+        # Created this variable just to hold the text passed into the messagebox as I couldn't find a way to make pytest-qt
+        # find and see the text on the messagebox 
+        self.testingVar = ""
+        
         self.FuncString = self.functionInput.text()
         self.lowerLimit = self.lowerLimitSpin.value()
         self.upperLimit = self.upperLimitSpin.value()
         self.sampleNum = self.sampleNumberSpin.value()
         self.initFuncCheck = checkFuncInput(self.FuncString)
-        if self.initFuncCheck != True: self.displayMessage(self.initFuncCheck)
+        if self.initFuncCheck != True: 
+            self.testingVar = self.initFuncCheck
+            self.displayMessage(self.initFuncCheck)
         else:
-            if self.lowerLimit >= self.upperLimit: self.displayMessage("Lower bound must be explicitly lower than the upper bound")
+            if self.lowerLimit >= self.upperLimit: 
+                self.testingVar = "Lower bound must be explicitly lower than the upper bound"
+                self.displayMessage("Lower bound must be explicitly lower than the upper bound")
             else:
                 mathFunction = evalFunction(self.FuncString)
                 xValues = np.linspace(start = self.lowerLimit, stop = self.upperLimit, num = self.sampleNum)
-                self.clearCanvas()
-                try:
+                yValues = mathFunction(xValues)
+                if type(yValues) == str:
+                    if yValues == "TypeError":
+                        self.testingVar = "You probably forgot to provide an argument somewhere. Check for 'sin()' for example"
+                        self.displayMessage("You probably forgot to provide an argument somewhere. Check for 'sin()' for example")
+                    elif yValues == "SyntaxError":
+                        self.testingVar = "You probably forgot to close a bracket somewhere. Check for 'sin(x' for example"
+                        self.displayMessage("You probably forgot to close a bracket somewhere. Check for 'sin(x' for example")
+                else:
+                    self.clearCanvas()
                     if "x" not in self.FuncString:
-                        self.canvas.axes.plot(xValues, np.array([mathFunction(xValues) for x in range(self.sampleNum)]), color='k', linewidth=3, label = f'{self.FuncString}')
+                        
+                        self.canvas.axes.plot(xValues, np.array([yValues for x in range(self.sampleNum)]), color='k', linewidth=3, label = f'{self.FuncString}')
                     else:
                         self.canvas.axes.plot(xValues, mathFunction(xValues), color='k', linewidth=3, label = f'{self.FuncString}')
                     self.canvas.axes.legend()
                     self.canvas.draw()
-                except ValueError:
-                    self.displayMessage("You probably forgot to close a bracket. Check input please")
 
     def clearCanvas(self):
         self.canvas.axes.clear()

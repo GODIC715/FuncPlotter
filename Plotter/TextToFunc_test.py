@@ -15,7 +15,7 @@ def test_evalFunction():
     assert mathFunction(5) == np.sin(5)
 
     mathFunction = evalFunction("someIllegalString")
-    assert mathFunction("anything") == False
+    assert mathFunction("anything") == "NameError"
 
     mathFunction = evalFunction("cos(x)/sin(x)")
     assert mathFunction(5) == np.cos(5) / np.sin(5)

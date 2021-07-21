@@ -110,7 +110,7 @@ class Ui_MainWindow(object):
         self.upperLimitSpin.setMinimum(-999)
         self.upperLimitSpin.setMaximum(999)
         self.upperLimitSpin.setSingleStep(1)
-        self.upperLimitSpin.setValue(0)
+        self.upperLimitSpin.setValue(10)
         self.upperLimitSpin.setDisplayIntegerBase(10)
         self.sampleNumberLable = QLabel(self.bgWidget)
         self.sampleNumberLable.setObjectName(u"sampleNumberLable")
