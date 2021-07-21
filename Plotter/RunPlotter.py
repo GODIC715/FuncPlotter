@@ -65,7 +65,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Created this variable just to hold the text passed into the messagebox as I couldn't find a way to make pytest-qt
         # find and see the text on the messagebox 
         self.testingVar = ""
-        
+
         self.FuncString = self.functionInput.text()
         self.lowerLimit = self.lowerLimitSpin.value()
         self.upperLimit = self.upperLimitSpin.value()
@@ -92,7 +92,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 else:
                     self.clearCanvas()
                     if "x" not in self.FuncString:
-                        
                         self.canvas.axes.plot(xValues, np.array([yValues for x in range(self.sampleNum)]), color='k', linewidth=3, label = f'{self.FuncString}')
                     else:
                         self.canvas.axes.plot(xValues, mathFunction(xValues), color='k', linewidth=3, label = f'{self.FuncString}')

@@ -144,7 +144,7 @@ class Ui_MainWindow(object):
         self.functionLabel.setText(QCoreApplication.translate("MainWindow", u"Function", None))
         self.functionInput.setToolTip(QCoreApplication.translate("MainWindow", u"Supported special operations are 'sin()', 'cos()' exponant as 'exp()' and power as '^'", None))
 #if QT_CONFIG(tooltip)
-        self.lowerLimitSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Supports integers between -999 and 999", None))
+        self.lowerLimitSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Ranges from -999 to 999", None))
 #endif // QT_CONFIG(tooltip)
         self.titleLabel.setText(QCoreApplication.translate("MainWindow", u"Function plotter", None))
         self.lowerLimitLabel.setText(QCoreApplication.translate("MainWindow", u"Lower bound for X", None))
@@ -152,11 +152,11 @@ class Ui_MainWindow(object):
         self.plotButton.setText(QCoreApplication.translate("MainWindow", u"Plot", None))
         self.clearButton.setText(QCoreApplication.translate("MainWindow", u"Clear", None))
 #if QT_CONFIG(tooltip)
-        self.upperLimitSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Supports integers between -999 and 999", None))
+        self.upperLimitSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Ranges from -999 to 999", None))
 #endif // QT_CONFIG(tooltip)
         self.sampleNumberLable.setText(QCoreApplication.translate("MainWindow", u"Sample number", None))
 #if QT_CONFIG(tooltip)
-        self.sampleNumberSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Needs to be =>100 to be smooth", None))
+        self.sampleNumberSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Needs to be =>100 to be smooth. Ranges from 10 to 9999", None))
 #endif // QT_CONFIG(tooltip)
     # retranslateUi
 

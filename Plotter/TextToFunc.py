@@ -45,13 +45,16 @@ def evalFunction(string : str):
             return "TypeError"
         except SyntaxError:
             return "SyntaxError"
+
+        # This error should never show up in the GUI because only "allowed words" and their replacements reach this function.
+        except NameError:
+            return "NameError"
     return func
 
 if __name__ == '__main__':
     mathText = input('enter function: f(x) = ')
     if checkFuncInput(mathText) != True:
         print(checkFuncInput(mathText))
-        exit()
     else:
         lowerBound = input('enter lower limit: ')
         upperBound = input('enter upper limit: ')
@@ -62,6 +65,7 @@ if __name__ == '__main__':
             numberOfSamples = int(numberOfSamples)        
         except ValueError:
             print("Invalid inputs in bounds and/or number of samples")
+            exit()
     if evalFunction(mathText) == "TypeError":
         print("You probably forgot to provide an argument somewhere. Check for 'sin()' for example")
     elif evalFunction(mathText) == "SyntaxError":
