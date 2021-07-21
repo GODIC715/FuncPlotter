@@ -41,7 +41,7 @@ def evalFunction(string : str):
     def func(x):
         try:
             return eval(string)
-        except (TypeError,SyntaxError):
+        except (TypeError,SyntaxError,NameError):
             return False
     return func
 
