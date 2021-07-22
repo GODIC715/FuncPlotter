@@ -69,7 +69,7 @@ if __name__ == '__main__':
     if evalFunction(mathText) == "TypeError":
         print("You probably forgot to provide an argument somewhere. Check for 'sin()' for example")
     elif evalFunction(mathText) == "SyntaxError":
-        print("You probably forgot to close a bracket somewhere. Check for 'sin(x' for example")
+        print("You probably forgot to close a bracket or provide a second number somewhere. Check for 'sin(x' or '5^' for example")
     else:
         if lowerBound >= upperBound: 
             print("Lower bound must be explicitly lower than the upper bound")

@@ -88,14 +88,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         self.testingVar = "You probably forgot to provide an argument somewhere. Check for 'sin()' for example"
                         self.displayMessage("You probably forgot to provide an argument somewhere. Check for 'sin()' for example")
                     elif yValues == "SyntaxError":
-                        self.testingVar = "You probably forgot to close a bracket somewhere. Check for 'sin(x' for example"
-                        self.displayMessage("You probably forgot to close a bracket somewhere. Check for 'sin(x' for example")
+                        self.testingVar = "You probably forgot to close a bracket or provide a second number somewhere. Check for 'sin(x' or '5^' for example"
+                        self.displayMessage("You probably forgot to close a bracket or provide a second number somewhere. Check for 'sin(x' or '5^' for example")
                 else:
                     self.clearCanvas()
                     if "x" not in self.funcString:
                         self.canvas.axes.plot(xValues, np.array([yValues for x in range(self.sampleNum)]), color='k', linewidth=3, label = f'{self.funcString}')
+                        self.testingVar = "Plotted successfully"
                     else:
                         self.canvas.axes.plot(xValues, mathFunction(xValues), color='k', linewidth=3, label = f'{self.funcString}')
+                        self.testingVar = "Plotted successfully"
                     self.canvas.axes.legend()
                     self.canvas.draw()
 
