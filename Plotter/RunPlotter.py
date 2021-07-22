@@ -92,7 +92,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         self.displayMessage("You probably forgot to close a bracket or provide a second number somewhere. Check for 'sin(x' or '5^' for example")
                 else:
                     self.clearCanvas()
-                    if "x" not in self.funcString:
+                    if "x" not in self.funcString: # Function input string is a valid math expression that just doesn't have an x in it. In other words, a cconstant value.
                         self.canvas.axes.plot(xValues, np.array([yValues for x in range(self.sampleNum)]), color='k', linewidth=3, label = f'{self.funcString}')
                         self.testingVar = "Plotted successfully"
                     else:
