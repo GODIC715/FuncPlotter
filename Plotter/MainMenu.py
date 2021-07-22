@@ -142,7 +142,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Function Plotter", None))
         self.functionLabel.setText(QCoreApplication.translate("MainWindow", u"Function", None))
-        self.functionInput.setToolTip(QCoreApplication.translate("MainWindow", u"Supported special operations are 'sin()', 'cos()' exponant as 'exp()' and power as '^'", None))
+        self.functionInput.setToolTip(QCoreApplication.translate("MainWindow", u"Supported special operations are 'sin()', 'cos()' exponant as 'exp()',\nsquare root as 'sqrt()' and power as '^'", None))
 #if QT_CONFIG(tooltip)
         self.lowerLimitSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Ranges from -999 to 999", None))
 #endif // QT_CONFIG(tooltip)
@@ -156,7 +156,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.sampleNumberLable.setText(QCoreApplication.translate("MainWindow", u"Sample number", None))
 #if QT_CONFIG(tooltip)
-        self.sampleNumberSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Needs to be =>100 to be smooth. Ranges from 10 to 9999", None))
+        self.sampleNumberSpin.setToolTip(QCoreApplication.translate("MainWindow", u"Ranges from 10 to 9999. Recommend to be =>100 to be smooth.", None))
 #endif // QT_CONFIG(tooltip)
     # retranslateUi
 
