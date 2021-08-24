@@ -1,0 +1,3 @@
+EVAL( "np.sin()" ) returns a TypeError
+EVAL( "np.sin(" ) returns a SyntaxError
+EVAL( "np.sin" ) returns a np.ufunc NOT AN ERROR.

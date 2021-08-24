@@ -7,10 +7,11 @@ from TextToFunc import *
 from MainMenu import *
 import icons
 
+
 class MyMplCanvas(FigureCanvas):
     def __init__(self, parent):
         fig = Figure()
-        self.axes = fig.add_subplot(1,1,1)
+        self.axes = fig.add_subplot(1, 1, 1)
 
         # Canvas and figure colors
         fig.patch.set_facecolor('#4668ef')
@@ -20,16 +21,16 @@ class MyMplCanvas(FigureCanvas):
         self.resize(parent.size().width() - 10, parent.size().height() - 10)
         self.setParent(parent)
         self.setStyleSheet("background-color:black;")
-    
+
     def setupCanvas(self):
         self.axes.spines['top'].set_color('none')
         self.axes.spines['right'].set_color('none')
         self.axes.spines['left'].set_linewidth(3)
         self.axes.spines['bottom'].set_linewidth(3)
-        self.axes.set_xlabel('X', fontsize = 18)
-        self.axes.set_ylabel('F(X)', fontsize = 18)
-        self.axes.tick_params(axis='x', labelsize = 12)
-        self.axes.tick_params(axis='y', labelsize = 12)
+        self.axes.set_xlabel('X', fontsize=18)
+        self.axes.set_ylabel('F(X)', fontsize=18)
+        self.axes.tick_params(axis='x', labelsize=12)
+        self.axes.tick_params(axis='y', labelsize=12)
         self.axes.xaxis.set_ticks_position('bottom')
         self.axes.yaxis.set_ticks_position('left')
 
@@ -78,7 +79,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             if self.lowerLimit >= self.upperLimit:
                 self.testingVar = "Lower bound must be explicitly lower than the upper bound"
-                self.displayMessage("Lower bound must be explicitly lower than the upper bound")
+                self.displayMessage(self.testingVar)
             else:
                 mathFunction = evalFunction(self.funcString)
                 xValues = np.linspace(start = self.lowerLimit, stop = self.upperLimit, num = self.sampleNum)
@@ -86,10 +87,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 if type(yValues) == str:
                     if yValues == "TypeError":
                         self.testingVar = "You probably forgot to provide an argument somewhere. Check for 'sin()' for example"
-                        self.displayMessage("You probably forgot to provide an argument somewhere. Check for 'sin()' for example")
+                        self.displayMessage(self.testingVar)
                     elif yValues == "SyntaxError":
                         self.testingVar = "You probably forgot to close a bracket or provide a second number somewhere. Check for 'sin(x' or '5^' for example"
-                        self.displayMessage("You probably forgot to close a bracket or provide a second number somewhere. Check for 'sin(x' or '5^' for example")
+                        self.displayMessage(self.testingVar)
+                elif type(yValues) == np.ufunc:
+                    self.testingVar = "You probably wrote a function without providing any parentheses. check for 'sin' for example"
+                    self.displayMessage(self.testingVar)
                 else:
                     self.clearCanvas()
                     if "x" not in self.funcString: # Function input string is a valid math expression that just doesn't have an x in it. In other words, a cconstant value.
