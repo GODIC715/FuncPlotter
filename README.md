@@ -6,6 +6,18 @@ FuncPlotter is function plotter made with python3, PySide2, NumPy and MatPlotLib
 It has a simple, colorful GUI which can be seen in the screenshots below.
 \
 \
+It supports sin, cos, exponants as "exp", square roots as "sqrt", power as "^"
+\
+\
+Input validation on everything with helpful error messages.
+\
+\
+To use this you need to install PySide2, MatPlotLib using "pip install pyside2 matplotlib"
+\
+\
+Run using "python RunPlotter.py"
+\
+\
 <img src = "https://user-images.githubusercontent.com/54773956/126572996-779b2641-6cd9-4cc4-addb-e89f2a841440.png" width=37% height=37%)>
 \
 \
